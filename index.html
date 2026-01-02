@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bushman Mick | Living Free in the Australian Outback</title>
+    
+    <!-- Social Preview -->
+    <meta property="og:title" content="Bushman Mick | Living Free in the Australian Outback">
+    <meta property="og:description" content="Join Mick on his adventure - left the Matrix in 2018, now living on $50/week in his van Gypsy. Fishing, bush tucker, and ultimate freedom.">
+    <meta property="og:image" content="https://i.ibb.co/Cp6VzH2J/bushm01.webp">
+    <meta property="og:url" content="https://boilermaker-innovator.github.io/bushman-mick-hub/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --outback-orange: #E85D04;
+            --outback-red: #9D0208;
+            --bush-green: #386641;
+            --sand: #F4E4BA;
+            --dark-earth: #1A1A1A;
+            --cream: #FEFAE0;
+            --water-blue: #219EBC;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(180deg, var(--dark-earth) 0%, #2D2D2D 100%);
+            min-height: 100vh;
+            color: var(--cream);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--outback-orange) 0%, var(--outback-red) 100%);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .header p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        /* Profile Section */
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--outback-orange);
+        }
+        
+        .profile-info h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .profile-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+        
+        .profile-stats {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .stat {
+            font-size: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        
+        /* Video Cards Container */
+        .videos-container {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Video Card */
+        .video-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .video-card.featured {
+            border: 2px solid var(--outback-orange);
+            box-shadow: 0 0 20px rgba(232, 93, 4, 0.3);
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--outback-orange);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            z-index: 10;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #000;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* iTabs Button */
+        .itabs-btn {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 44px;
+            height: 44px;
+            background: var(--bush-green);
+            border: 3px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        
+        .itabs-btn:hover {
+            transform: scale(1.1);
+            background: #4a8c4f;
+        }
+        
+        .itabs-btn span {
+            color: white;
+            font-family: Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .itabs-label {
+            position: absolute;
+            bottom: -22px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            white-space: nowrap;
+        }
+        
+        /* Video Info */
+        .video-info {
+            padding: 15px;
+        }
+        
+        .video-info h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .video-info p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+        
+        /* Popup Overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .popup-overlay.active {
+            display: flex;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .popup-content {
+            background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            max-width: 400px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: slideUp 0.3s ease;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .popup-header {
+            background: linear-gradient(135deg, var(--bush-green) 0%, #2d5a30 100%);
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+        
+        .popup-header.donate {
+            background: linear-gradient(135deg, var(--outback-orange) 0%, var(--outback-red) 100%);
+        }
+        
+        .popup-header h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            padding-right: 40px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0,0,0,0.3);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .popup-body {
+            padding: 20px;
+        }
+        
+        .popup-section {
+            margin-bottom: 20px;
+        }
+        
+        .popup-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .popup-section h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--outback-orange);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .popup-section p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .popup-section ul {
+            list-style: none;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .popup-section ul li::before {
+            content: '→ ';
+            color: var(--outback-orange);
+        }
+        
+        /* Action Button */
+        .action-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--outback-orange) 0%, var(--outback-red) 100%);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            border-radius: 12px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .action-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(232, 93, 4, 0.4);
+        }
+        
+        .action-btn.youtube {
+            background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
+        }
+        
+        .action-btn.green {
+            background: linear-gradient(135deg, var(--bush-green) 0%, #2d5a30 100%);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 20px;
+        }
+        
+        .footer p {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+        
+        .footer a {
+            color: var(--bush-green);
+            text-decoration: none;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--outback-orange);
+        }
+        
+        /* Progress Bar (for GoFundMe) */
+        .progress-container {
+            margin: 15px 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--bush-green), #4CAF50);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+        
+        .progress-text strong {
+            color: var(--outback-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>🦘 BUSHMAN MICK</h1>
+        <p>Living Free in the Australian Outback</p>
+    </header>
+    
+    <!-- Profile Section -->
+    <section class="profile">
+        <img src="https://i.ibb.co/Cp6VzH2J/bushm01.webp" alt="Bushman Mick" class="profile-img">
+        <div class="profile-info">
+            <h2>G'day, I'm Mick</h2>
+            <p>Left the Matrix in 2018. Now I live in my van "Gypsy", catch my own food, and explore Australia.</p>
+            <div class="profile-stats">
+                <span class="stat">📍 Far North QLD</span>
+                <span class="stat">🚐 Van Life</span>
+                <span class="stat">🎣 Fisher</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Cards -->
+    <main class="videos-container">
+        
+        <!-- Video 1: GoFundMe (Featured) -->
+        <article class="video-card featured">
+            <span class="featured-badge">🆘 Needs Help</span>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/TqB0YdYvGdk" 
+                        title="Help Bushman Mick" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <button class="itabs-btn" onclick="openPopup('gofundme')">
+                    <span>i</span>
+                </button>
+                <span class="itabs-label">Learn More</span>
+            </div>
+            <div class="video-info">
+                <h3>🆘 Help Get Gypsy Back on the Road</h3>
+                <p>A dodgy mechanic ripped me off $20K. Now I need a new engine for my van.</p>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 58%;"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span><strong>$10,481</strong> raised</span>
+                        <span>Goal: $18,000</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+        <!-- Video 2: This is How I Live -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/bLiw3KtVLn0" 
+                        title="This is How I Live" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <button class="itabs-btn" onclick="openPopup('lifestyle')">
+                    <span>i</span>
+                </button>
+                <span class="itabs-label">Learn More</span>
+            </div>
+            <div class="video-info">
+                <h3>🌴 This is How I Live</h3>
+                <p>Bush medicine, coconut bacon, fire spinning, and catching fresh fish at sunset.</p>
+            </div>
+        </article>
+        
+        <!-- Video 3: Wildlife Adventures -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/u9XVOq6muG0" 
+                        title="Wildlife Adventures" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <button class="itabs-btn" onclick="openPopup('wildlife')">
+                    <span>i</span>
+                </button>
+                <span class="itabs-label">Learn More</span>
+            </div>
+            <div class="video-info">
+                <h3>🐊 Wild Buffalo, Horses & Crocs</h3>
+                <p>Chasing water buffalo with my drone, wild brumbies, and stalking crocodiles.</p>
+            </div>
+        </article>
+        
+        <!-- Video 4: Catching Barramundi -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/2sN8Jo8pb9Q" 
+                        title="Catching Barramundi" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <button class="itabs-btn" onclick="openPopup('fishing')">
+                    <span>i</span>
+                </button>
+                <span class="itabs-label">Learn More</span>
+            </div>
+            <div class="video-info">
+                <h3>🎣 Catching Barramundi in the Outback</h3>
+                <p>Two barra in one day from a tiny creek. Bush tucker and campfire cooking.</p>
+            </div>
+        </article>
+        
+        <!-- Video 5: Winter Fishing -->
+        <article class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/LL_Ap4HpW1Q" 
+                        title="Winter Fishing Far North QLD" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                <button class="itabs-btn" onclick="openPopup('winterfish')">
+                    <span>i</span>
+                </button>
+                <span class="itabs-label">Learn More</span>
+            </div>
+            <div class="video-info">
+                <h3>☀️ Winter Fishing in Far North QLD</h3>
+                <p>Beautiful winter day, cast netting for bait, exploring waterholes.</p>
+            </div>
+        </article>
+        
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.youtube.com/@bushmanmick777" target="_blank" title="YouTube">▶</a>
+            <a href="https://www.instagram.com/bushmanmick/" target="_blank" title="Instagram">📷</a>
+            <a href="https://gofund.me/TqB0YdYvGdk" target="_blank" title="GoFundMe">💚</a>
+        </div>
+        <p>Powered by <a href="https://itabs.ai" target="_blank">iTabs.ai</a></p>
+    </footer>
+    
+    <!-- Popup Overlays -->
+    
+    <!-- GoFundMe Popup -->
+    <div class="popup-overlay" id="popup-gofundme">
+        <div class="popup-content">
+            <div class="popup-header donate">
+                <h3>🆘 Help Bushman Mick</h3>
+                <button class="close-btn" onclick="closePopup('gofundme')">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>🚨 What Happened</h4>
+                    <p>A dodgy mechanic ripped me off $20,000. Took my money, destroyed my engine, and left me stranded. My van "Gypsy" is my home - without her, I can't live my life or make my videos.</p>
+                </div>
+                <div class="popup-section">
+                    <h4>💰 Where the Money Goes</h4>
+                    <ul>
+                        <li>New engine for my Mitsubishi Delica</li>
+                        <li>Installation and mechanical work</li>
+                        <li>Getting Gypsy back on the road</li>
+                    </ul>
+                </div>
+                <div class="popup-section">
+                    <h4>🙏 Why It Matters</h4>
+                    <p>This van isn't just transport - it's my home, my freedom, and how I share my adventures with you. Every dollar helps me get back to doing what I love.</p>
+                </div>
+                <a href="https://www.gofundme.com/f/help-bushman-mick-get-gypsy-back-on-the-road" target="_blank" class="action-btn">
+                    💚 DONATE NOW
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lifestyle Popup -->
+    <div class="popup-overlay" id="popup-lifestyle">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>🌴 This is How I Live</h3>
+                <button class="close-btn" onclick="closePopup('lifestyle')">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>🌿 Bush Medicine</h4>
+                    <p>I use the caustic bush to heal cuts from fishing - the white sap forms a natural bandage with antibacterial properties. Works as good as anything from a pharmacy.</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🥥 Living on Nature</h4>
+                    <ul>
+                        <li>Coconuts for hydration and "coconut bacon"</li>
+                        <li>Native bush peanuts I forage</li>
+                        <li>Fresh fish caught daily</li>
+                        <li>Living on about $50/week</li>
+                    </ul>
+                </div>
+                <div class="popup-section">
+                    <h4>🔥 My Philosophy</h4>
+                    <p>When I left suburban life, I cleared my slate and had an open mind. I simplified everything - one bottle of hemp soap does everything. The longer I'm on this journey, the closer I get to living 100% naturally.</p>
+                </div>
+                <a href="https://www.youtube.com/@bushmanmick777?sub_confirmation=1" target="_blank" class="action-btn youtube">
+                    ▶ SUBSCRIBE ON YOUTUBE
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Wildlife Popup -->
+    <div class="popup-overlay" id="popup-wildlife">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>🐊 Wildlife Adventures</h3>
+                <button class="close-btn" onclick="closePopup('wildlife')">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>🦬 Water Buffalo</h4>
+                    <p>Started chasing 3 buffalo with my drone... then 3 turned into 6... then 6 turned into HUNDREDS. I'm truly in buffalo country now!</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🐴 Wild Brumbies</h4>
+                    <p>Majestic wild horses of all colors, shapes, and sizes. Watching them protect their young and live free - so amazing to witness.</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🐊 Saltwater Crocodiles</h4>
+                    <p>Found a 4-metre croc in a billabong. These prehistoric dinosaurs are smart - he knew the sound of my drone and would dive deep every time. Caught him on camera stalking wallabies in knee-high water. NEVER enter croc waters!</p>
+                </div>
+                <a href="https://www.instagram.com/bushmanmick/" target="_blank" class="action-btn green">
+                    📷 FOLLOW ON INSTAGRAM
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Fishing Popup -->
+    <div class="popup-overlay" id="popup-fishing">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>🎣 Catching Barramundi</h3>
+                <button class="close-btn" onclick="closePopup('fishing')">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>🐟 The Catch</h4>
+                    <p>Two barramundi in one day! The first was 60cm+ from a creek only half a metre deep. Barra are masters at getting off the hook - this one even bent my hook!</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🥾 My Approach</h4>
+                    <p>Being a good fisherman is about being a good navigator - hiking through the forest, finding secret spots other people can't be bothered going to. Travel light: one rod, prawn lure, knife, pliers, and a mandarin.</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🌿 Bush Tucker Warning</h4>
+                    <p>Found black bean seed pods - extremely poisonous unless you know how to prepare them properly. People have died. NEVER experiment with plants unless you know 100% what you're doing.</p>
+                </div>
+                <a href="https://www.youtube.com/@bushmanmick777?sub_confirmation=1" target="_blank" class="action-btn youtube">
+                    ▶ SUBSCRIBE ON YOUTUBE
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Winter Fishing Popup -->
+    <div class="popup-overlay" id="popup-winterfish">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h3>☀️ Winter Fishing FNQ</h3>
+                <button class="close-btn" onclick="closePopup('winterfish')">✕</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-section">
+                    <h4>🌤️ Perfect Conditions</h4>
+                    <p>Winter's just started up here in Far North Queensland - the rain has stopped, the sun is out, and it's bloody beautiful. Perfect time to explore my old fishing spots.</p>
+                </div>
+                <div class="popup-section">
+                    <h4>🎯 Fishing Techniques</h4>
+                    <ul>
+                        <li>Cast netting for mullet bait</li>
+                        <li>Staying low and quiet near croc country</li>
+                        <li>Finding the deeper holes</li>
+                        <li>Exploring multiple spots till you find fish</li>
+                    </ul>
+                </div>
+                <div class="popup-section">
+                    <h4>🐊 Croc Awareness</h4>
+                    <p>Always checking for crocs before I fish. If there's any around, they definitely know I'm there. Not taking any risks - I retrieve water with my cast net rope instead of getting close.</p>
+                </div>
+                <a href="https://www.youtube.com/@bushmanmick777?sub_confirmation=1" target="_blank" class="action-btn youtube">
+                    ▶ SUBSCRIBE ON YOUTUBE
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Open popup
+        function openPopup(id) {
+            document.getElementById('popup-' + id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close popup
+        function closePopup(id) {
+            document.getElementById('popup-' + id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close on overlay click
+        document.querySelectorAll('.popup-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+        
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.popup-overlay.active').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
